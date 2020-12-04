@@ -37,7 +37,7 @@ def check_passport_field_validity(passports):
       field_result = check_field(item[0], item[1])
       if debug:
         print(str(item)  + " - " + str(field_result) + " - " + str(result) )
-      result = result and check_field(item[0], item[1])
+      result = result and field_result
       
     if result:
       valid_passports.append(passport)
