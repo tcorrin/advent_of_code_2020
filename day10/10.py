@@ -33,8 +33,8 @@ def process_node(node, number_of_paths, graph, paths_per_adapter):
     if value:
       number_of_paths += (len(value) - 1)
     for new_node in value:
-      number_of_paths, paths_per_adapter = process_node(new_node, number_of_paths, graph, paths_per_adapter)
-  return number_of_paths, paths_per_adapter
+      number_of_paths  = process_node(new_node, number_of_paths, graph, paths_per_adapter)
+  return number_of_paths
 
 def calculate_number_of_paths(adapters):
   adapters.insert(0,0)
@@ -50,8 +50,8 @@ def calculate_number_of_paths(adapters):
     graph[adapter] = jumps
   adapters.sort(reverse=True)
   for adapter in adapters:
-    number_of_paths, paths_per_adapter = process_node(adapter, 1, graph, paths)
-    paths_per_adapter[adapter] = number_of_paths
+    number_of_paths = process_node(adapter, 1, graph, paths)
+    paths[adapter] = number_of_paths
     if debug:
       print(str(paths_per_adapter))
   return paths[0]
